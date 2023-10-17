@@ -5,7 +5,6 @@ from ..models import Message
 
 class ChatView(UnicornView):
     channel_pk: int = 1
-    user_pk: int = 1
     messages = Message.objects.none()
 
     def add(self, message: str):
