@@ -16,7 +16,7 @@ class ChatView(UnicornView):
         self.get_messages()
 
     def get_messages(self):
-        self.messages = Message.objects.filter(channel=self.channel_pk)
+        self.messages = Message.objects.filter(channel=self.channel_pk).order_by("created_at")
 
     def mount(self):
         self.get_messages()
