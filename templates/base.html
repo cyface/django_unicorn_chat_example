@@ -1,0 +1,13 @@
+{% load unicorn %}<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Unicorn Test</title>
+    {% unicorn_scripts %}
+</head>
+<body>
+{% csrf_token %}
+{% block content %}
+{% endblock content %}
+</body>
+</html>
