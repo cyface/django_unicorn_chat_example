@@ -1,0 +1,28 @@
+{% load unicorn %}<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <title>Unicorn Chat</title>
+    <style>
+        /* Unicorn Rainbow CSS Linear Gradient Background */
+        /* from https://gradient.page/css/ui-gradients/unicorn-rainbow */
+        .unicorn-gradient {
+            background: #f7f0ac;
+            background: linear-gradient(
+                    to right,
+                    #f7f0ac, #acf7f0, #f0acf7
+            );
+        }
+        body {
+            font-family: sans-serif;
+        }
+    </style>
+    {% unicorn_scripts %}
+</head>
+<body class="unicorn-gradient">
+{% csrf_token %}
+{% block content %}
+{% endblock content %}
+</body>
+</html>

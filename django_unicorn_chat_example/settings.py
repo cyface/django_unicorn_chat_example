@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-nya-j#kytytzl8impk83ohtd)xh=k#+r2jypekp8s0rx32$j^6
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["192.168.50.155"]
 
 
 # Application definition
@@ -56,8 +56,6 @@ ROOT_URLCONF = 'django_unicorn_chat_example.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / 'templates']
-        ,
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

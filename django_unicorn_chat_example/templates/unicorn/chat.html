@@ -1,0 +1,48 @@
+{% load static %}
+<div unicorn:poll-4000="get_messages" style="grid-area: 2 / 1 / 2 / span 2;">
+    <div style="border:5px double #c1a200; padding: 15px; min-height: 40vh; max-height: 40vh; overflow: auto; grid-column: 1"
+         id="messageBox">
+        {% for message in messages %}
+            {% ifchanged %}
+                <em style="font-size: smaller; color: gray">--- {{ message.created_at|date:'l, j-F' }} ---</em>
+            {% endifchanged %}
+            <p style="margin: 0 auto 0 auto;"><strong>{{ message.from_user.first_name }}</strong>&nbsp;
+                <span style="color:gray; font-size:x-small;">
+                    {{ message.created_at|date:'fA' }}</span></p>
+            <p style="margin: 0 0 5px 0;">{{ message.content }}</p>
+        {% endfor %}
+    </div>
+    <br>
+    {% if request.user %}
+        <div>
+            <input type="text"
+                   name="message"
+                   id="message"
+                   placeholder="Have something nice to say?"
+                   unicorn:dirty.attr="readonly"
+                   unicorn:change="add($event.target.value.trim())"
+                   maxlength="100"
+                   minlength="1"
+                   size="25"
+                   style="font-size: larger; border: 3px groove gold;"
+            />
+            <button title="Send Message"
+                    style="grid-column: 2; grid-row: 2; border:none; vertical-align: middle; opacity: .4; background: center / contain no-repeat url({% static 'img/paper-airplane.svg' %});"
+                    onClick="Unicorn.call('chat.add', message.value.trim())"
+            >&nbsp;
+            </button>
+        </div>
+    {% endif %}
+    <script>
+        window.addEventListener('DOMContentLoaded', (event) => {
+            messageBox.scrollTop = messageBox.scrollHeight - messageBox.clientHeight
+            Unicorn.addEventListener('updated', (component) => {
+                    if (component.name == 'chat') {
+                        messageBox.scrollTop = messageBox.scrollHeight - messageBox.clientHeight
+                        message.value = ''
+                    }
+                }
+            )
+        })
+    </script>
+</div>

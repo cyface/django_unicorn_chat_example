@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% load unicorn %}
+{% block content %}
+    <div style="display: grid; grid-template-columns: 210px 203px;">
+        <h1 style="display: grid; grid-area: 1 / 1; margin: 0; font-size: x-large;">#unicorn-chat</h1>
+        <p style="grid-area: 1 / 2; margin: 0; align-self: end; justify-self: end;">
+            Hi <strong>{{ user.username }}</strong>!
+            <a href="{% url 'logout' %}" style="font-size: x-small">Log Out</a>
+        </p>
+        {% unicorn 'chat' %}
+    </div>
+{% endblock content %}

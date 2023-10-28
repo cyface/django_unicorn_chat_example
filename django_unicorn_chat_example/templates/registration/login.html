@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block content %}
-
+    <h1>Welcome to Unicorn Chat!</h1>
     {% if form.errors %}
         <p>Your username and password didn't match. Please try again.</p>
     {% endif %}
@@ -28,8 +28,14 @@
             </tr>
         </table>
 
-        <input type="submit" value="login">
+        <input type="submit" value="Log In" style="margin: 5px 0 0 107px; height: 30px; width: 100px">
         <input type="hidden" name="next" value="{{ next }}">
     </form>
 
+    <h3>Registered Unicorn Usernames</h3>
+    <ul>
+    <li>admin</li>
+    <li>astra</li>
+    <li>luna</li>
+    </ul>
 {% endblock %}
